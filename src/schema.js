@@ -4,12 +4,14 @@ type Author {
     id: ID!
     name: String!
     verified: Boolean!
+    reviews: [Review!]
 }
 
 type Game {
     id: ID!
     name: String!
     platform: [String!]!
+    reviews: [Review!]
 }
 
 type Review {
@@ -18,6 +20,8 @@ type Review {
     content: String!
     author_id: String!
     game_id: String!
+    author: Author!
+    game: Game!
 }
 
 type Query {

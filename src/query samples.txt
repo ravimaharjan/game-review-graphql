@@ -1,0 +1,49 @@
+
+--Query to get the game with gameId along with it's reviews and the author of review.
+query GameQuery($gameId: ID!) {
+    game(id: $gameId) {
+        name,
+            platform,
+            reviews {
+            content,
+                rating,
+                author {
+                name
+            }
+        }
+    }
+}
+
+
+--Query to get all reviews with it's author and also the reviews made by those authors.
+query GameQuery {
+  reviews {
+        content,
+        id,
+        rating,
+        author {
+            name,
+            reviews {
+                content,
+                rating
+            }
+        },
+        game {
+            name
+        }
+    }
+}
+
+-- Query to get specific author with all reviews done by that author
+query AuthorQuery($authorId: ID!) {
+  author(id: $authorId) {
+    name,
+    verified,
+    reviews {
+      game {
+        name,
+      },
+      rating
+    }
+  }
+}
