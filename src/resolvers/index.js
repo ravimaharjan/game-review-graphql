@@ -9,6 +9,5 @@ const resolver = {
     Review: review,
     Author: author
 }
-console.log('resol', resolver);
 
 export default resolver;
