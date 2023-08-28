@@ -21,7 +21,7 @@ const query = {
         if (!hasVerifiedFilter) return this.review;
 
         const verifiedAuthorSet = new Set();
-        //first get the verified authors
+        //first get the authors that match the verified flag set by the client.
         authors.forEach((author) => {
             if (author.verified === filter.authorVerified)
                 verifiedAuthorSet.add(author.id);

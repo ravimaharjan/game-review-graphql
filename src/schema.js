@@ -11,7 +11,7 @@ type Game {
     id: ID!
     name: String!
     platform: [String!]!
-    reviews: [Review!]
+    reviews(filter: Filter): [Review!]
 }
 
 type Review {
@@ -35,8 +35,14 @@ type Query {
 
 input Filter {
     authorVerified: Boolean
-
 }
 `
 
 export default typeDefs
+
+/**
+ * - We have applied filter in two places. One in the Query type and other in the Game type.
+ *   Since reviews is the query type resolver we keep it in the filter
+ *   But getting the filtered reviews of the specific game is part of the Game type. so we need to 
+ *   keep filter in the Game type itself.
+ */
