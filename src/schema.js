@@ -25,12 +25,17 @@ type Review {
 }
 
 type Query {
-    reviews : [Review]
+    reviews(filter: Filter) : [Review]
     review(id:ID!): Review
     games: [Game]
     game(id: ID!): Game
     authors: [Author]
     author(id:ID!) : Author
+}
+
+input Filter {
+    authorVerified: Boolean
+
 }
 `
 
