@@ -47,3 +47,47 @@ query AuthorQuery($authorId: ID!) {
     }
   }
 }
+
+-- Query to retrieve reviews from authors who are verified authors.
+query ReviewQuery() {
+  reviews(filter: {
+    authorVerified: true
+  }) {
+    content,
+    rating,
+    author {
+      name,
+      verified
+    }
+  }
+}
+
+
+-- Query to retrieve game with gameId and their reviews with verified authors.
+query GameQuery($gameId: ID!) {
+  game(id: $gameId) {
+    name,
+    platform,
+    reviews(filter: {
+      authorVerified:true
+    }) {
+      content,
+      author_id,
+      rating,
+      author {
+        name,
+        verified
+      }
+    }
+  }
+}
+
+-- Delete the game with linked reviews
+mutation {
+  deleteGame(id: "56af9adc-d0b8-aa4g-871f-cef66f86f7ap") 
+}
+
+-- Delete author
+mutation {
+  deleteAuthor(id: "")
+}

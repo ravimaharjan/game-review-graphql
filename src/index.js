@@ -3,7 +3,7 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import typeDefs from './schema.js';
 import resolver from './resolvers/index.js'
 import { config } from "dotenv";
-import { games, authors, reviews } from './db.js';
+import db from './db.js';
 
 config();
 const port = process.env.SERVER_PORT;
@@ -19,7 +19,7 @@ const { url } = await startStandaloneServer(server, {
         port: port
     },
     context: async () => ({
-        authors, games, reviews
+        db
     })
 
 })
