@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 const mutation = {
-    addAuthor(parent, { input }, { authors }) {
+    addAuthor(parent, { input }, { db }) {
         const { name, verified } = input;
         const id = uuid()
         const newAuthor = {
@@ -9,22 +9,22 @@ const mutation = {
             name,
             verified
         }
-        authors.push(newAuthor)
+        db.authors.push(newAuthor)
         return newAuthor;
     },
 
-    addGame(parent, { input }, { games }) {
+    addGame(parent, { input }, { db }) {
         const { name, platform } = input;
         const newGame = {
             id: uuid(),
             name,
             platform
         }
-        games.push(newGame);
+        db.games.push(newGame);
         return newGame;
     },
 
-    addReview(parent, { input }, { reviews }) {
+    addReview(parent, { input }, { db }) {
         const { rating, author_id, game_id, content } = input;
         const newReview = {
             id: uuid(),
@@ -33,7 +33,7 @@ const mutation = {
             author_id,
             game_id
         }
-        reviews.push(newReview);
+        db.reviews.push(newReview);
         return newReview;
     },
 
