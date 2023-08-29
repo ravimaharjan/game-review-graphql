@@ -24,6 +24,15 @@ type Review {
     game: Game!
 }
 
+type Mutation {
+    addAuthor(input:addAuthorInput!):Author!
+    addGame(input: addGameInput!): Game!
+    addReview(input: addReviewInput!): Review!
+    deleteAuthor(id: ID!): Boolean!
+    deleteReview(id: ID!): Boolean!
+    deleteGame(id:ID!):Boolean!
+}
+
 type Query {
     reviews(filter: Filter) : [Review]
     review(id:ID!): Review
@@ -35,6 +44,23 @@ type Query {
 
 input Filter {
     authorVerified: Boolean
+}
+
+input addAuthorInput {
+    name: String!
+    verified: Boolean!
+}
+
+input addGameInput {
+    name: String!
+    platform: [String!]!
+}
+
+input addReviewInput {
+    rating: Int!
+    content: String!
+    author_id: String!
+    game_id: String!
 }
 `
 

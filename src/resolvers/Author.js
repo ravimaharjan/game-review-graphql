@@ -1,6 +1,6 @@
 const author = {
-    reviews({ id }, args, { reviews }) {
-        return reviews.filter(review => review.author_id === id)
+    reviews({ id }, args, { db }) {
+        return db.reviews.filter(review => review.author_id === id)
     }
 }
 

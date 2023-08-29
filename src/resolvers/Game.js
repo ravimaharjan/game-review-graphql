@@ -1,13 +1,13 @@
 const game = {
-    reviews({ id }, { filter }, { reviews, authors }) {
+    reviews({ id }, { filter }, { db }) {
         const hasFilter = filter?.authorVerified !== undefined ? true : false;
-        const filteredReviews = reviews.filter(review => review.game_id === id);
+        const filteredReviews = db.reviews.filter(review => review.game_id === id);
 
         if (!hasFilter) return filteredReviews;
 
         const verifiedAuthorsSet = new Set();
 
-        authors.forEach(author => {
+        db.authors.forEach(author => {
             if (author.verified === filter.authorVerified) verifiedAuthorsSet.add(author.id);
         })
 

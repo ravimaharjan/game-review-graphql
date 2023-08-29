@@ -1,9 +1,9 @@
 const review = {
-    author(parent, args, { authors }) {
-        return authors.find(author => author.id === parent.author_id)
+    author(parent, args, { db }) {
+        return db.authors.find(author => author.id === parent.author_id)
     },
-    game(parent, args, { games }) {
-        return games.find(game => game.id === parent.game_id)
+    game(parent, args, { db }) {
+        return db.games.find(game => game.id === parent.game_id)
     }
 }
 
