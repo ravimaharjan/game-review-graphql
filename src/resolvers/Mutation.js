@@ -81,6 +81,40 @@ const mutation = {
 
         const deleted = initialLength !== afterDeleteLength ? true : false;
         return deleted;
+    },
+
+
+    updateAuthor(parent, { id, input }, { db }) {
+        const index = db.authors.findIndex(author => author.id === id);
+        if (index === -1) return new Error(`Author with ID ${id} not found.`)
+        const newAuthor = {
+            ...db.authors[index],
+            ...input
+        };
+        db.authors[index] = newAuthor;
+        return newAuthor;
+    },
+
+    updateGame(parent, { id, input }, { db }) {
+        const index = db.games.findIndex(game => game.id === id);
+        if (index === -1) return new Error(`Game with ID ${id} not found.`)
+        const newGame = {
+            ...db.games[index],
+            ...input
+        };
+        db.games[index] = newGame;
+        return newGame;
+    },
+
+    updateReview(parent, { id, input }, { db }) {
+        const index = db.reviews.findIndex(review => review.id === id);
+        if (index === -1) return new Error(`Review with ID ${id} not found.`)
+        const newReview = {
+            ...db.reviews[index],
+            ...input
+        };
+        db.reviews[index] = newReview;
+        return newReview;
     }
 }
 

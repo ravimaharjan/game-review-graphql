@@ -31,6 +31,9 @@ type Mutation {
     deleteAuthor(id: ID!): Boolean!
     deleteReview(id: ID!): Boolean!
     deleteGame(id:ID!):Boolean!
+    updateAuthor(id: ID!, input: addAuthorInput!): Author!
+    updateGame(id: ID!, input: addGameInput!) : Game!
+    updateReview(id: ID!, input: addReviewInput!): Review!
 }
 
 type Query {

@@ -91,3 +91,19 @@ mutation {
 mutation {
   deleteAuthor(id: "")
 }
+
+-- Update game
+mutation($updateGameId: ID!, $input: addGameInput!) {
+  updateGame(id: $updateGameId, input: $input) {
+    name,
+    platform
+  } 
+}
+ Input 
+{
+  "updateGameId": "53a0724c-a416-4cac-ae45-bfaedce1f147",
+  "input": {
+    "name": "super game",
+    "platform": "PS1"
+  }
+}
