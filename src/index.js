@@ -6,7 +6,7 @@ import { config } from "dotenv";
 import db from './db.js';
 
 config();
-const port = process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT ? process.env.SERVER_PORT : 4000;
 
 const server = new ApolloServer({
 
